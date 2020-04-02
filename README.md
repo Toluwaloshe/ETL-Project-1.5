@@ -13,9 +13,20 @@ All of the data that we used were from `https://data.humdata.org/dataset/novel-c
 
 ## Data Cleanup and Analysis
 
-* TRANSFORM
+* TRANSFORMATION STEPS
+Our transformation steps we needed to clean the data to be readable, presentable, and easy for us to query in the later stages.  This was done by:
+  * Developing a cleaning function in python that would select the data in the month of March 2020.  This was applied to all datasets that we have.
+  * All of the dates that we have in the data sets we treated as values through the `pd.melt` function in Pandas.
+  * We the found a way of finding the daily increase with respect to each table.  This value was converted from a float to an integer
 
-* LOAD
-    * ABC
-    * EFG
-    * HIJ
+* LOADING STEPS
+  * We established a connection to a local PostgreSQL server in our desktop to store the data
+  * We have a schema that just makes the tables and we can confirm it throught `engine.table_names()`
+  * We pushed the Pandas DataFrame to the local PostgreSQL server so we can retrieve and query the data in our Jupyter Notebook
+
+* Analysis / SQL Queries
+In this part, we want to find:
+  * Top 5 countries with the most/least confirmed cases
+  * Top 5 countries with the most/least deaths
+  * Top 5 countries with the most/least recovered
+  * Date in March with the most confirmed/deaths/recovered
